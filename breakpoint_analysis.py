@@ -39,7 +39,7 @@ def trend_analysis(emp_li, temp_li, air_param):
             second_mark = temp_li[i+1]
         temp = data[air_param].iloc[first_mark: second_mark].values
 
-        emp_li.append(mk.original_test(temp)[0])
+        emp_li.append(mk.yue_wang_modification_test(temp, 0.10)[0])
 
     return emp_li
 
