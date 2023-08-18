@@ -84,7 +84,11 @@ def relabel(x, y):
     ax[x, y].set_yticklabels(labels)
     ax[x, y].tick_params(left=False)
 
-
+def fmt_gen(x, y, fmt_month, fmt_year):
+    ax[x, y].xaxis.set_minor_locator(fmt_month)
+    ax[x, y].xaxis.set_minor_formatter(mdates.DateFormatter('%b'))
+    ax[x, y].xaxis.set_major_locator(fmt_year)
+    ax[x, y].xaxis.set_major_formatter(mdates.DateFormatter('%b/%y'))
 
 while True:
 
@@ -151,58 +155,40 @@ ax[0, 0].plot(a, data["pm"], 'b', lw =0.8, label="PM2.5 AQI")
 ax[0, 0].set_title('AQI VALUE OF PM2.5')
 fmt_month = mdates.MonthLocator(interval=3)
 fmt_year = mdates.YearLocator()
-ax[0, 0].xaxis.set_minor_locator(fmt_month)
-ax[0, 0].xaxis.set_minor_formatter(mdates.DateFormatter('%b'))
-ax[0, 0].xaxis.set_major_locator(fmt_year)
-ax[0, 0].xaxis.set_major_formatter(mdates.DateFormatter('%b/%y'))
+fmt_gen(0, 0, fmt_month, fmt_year)
+
 
 ax[1, 0].plot(a, data["pm"], 'b', lw =0.8, label="PM2.5 AQI")
 ax[1, 0].set_title('AQI VALUE OF PM2.5')
 plot_xline(1, 0, cut_pm)
 fmt_month = mdates.MonthLocator(interval=3)
 fmt_year = mdates.YearLocator()
-ax[1, 0].xaxis.set_minor_locator(fmt_month)
-ax[1, 0].xaxis.set_minor_formatter(mdates.DateFormatter('%b'))
-ax[1, 0].xaxis.set_major_locator(fmt_year)
-ax[1, 0].xaxis.set_major_formatter(mdates.DateFormatter('%b/%y'))
+fmt_gen(1, 0, fmt_month, fmt_year)
 
 
 ax[0, 1].plot(a, data["ozone"], 'b', lw =0.8, label="OZONE AQI")
 ax[0, 1].set_title('AQI VALUE OF OZONE')
 fmt_month = mdates.MonthLocator(interval=3)
 fmt_year = mdates.YearLocator()
-ax[0, 1].xaxis.set_minor_locator(fmt_month)
-ax[0, 1].xaxis.set_minor_formatter(mdates.DateFormatter('%b'))
-ax[0, 1].xaxis.set_major_locator(fmt_year)
-ax[0, 1].xaxis.set_major_formatter(mdates.DateFormatter('%b/%y'))
+fmt_gen(0, 1, fmt_month, fmt_year)
 
 ax[1, 1].plot(a, data["ozone"], 'b', lw =0.8, label="OZONE AQI")
 ax[1, 1].set_title('AQI VALUE OF OZONE')
 plot_xline(1, 1, cut_ozon)
 fmt_month = mdates.MonthLocator(interval=3)
 fmt_year = mdates.YearLocator()
-ax[1, 1].xaxis.set_minor_locator(fmt_month)
-ax[1, 1].xaxis.set_minor_formatter(mdates.DateFormatter('%b'))
-ax[1, 1].xaxis.set_major_locator(fmt_year)
-ax[1, 1].xaxis.set_major_formatter(mdates.DateFormatter('%b/%y'))
-
+fmt_gen(1, 1, fmt_month, fmt_year)
 
 
 ax[2, 1].plot(a, test[['trend']])
-ax[2, 1].xaxis.set_minor_locator(fmt_month)
-ax[2, 1].xaxis.set_minor_formatter(mdates.DateFormatter('%b'))
-ax[2, 1].xaxis.set_major_locator(fmt_year)
-ax[2, 1].xaxis.set_major_formatter(mdates.DateFormatter('%b/%y'))
+fmt_gen(2, 1, fmt_month, fmt_year)
 plot_xline(2, 1, cut_ozon)
 relabel(2, 1)
 
 
 
 ax[2, 0].plot(a, test_two[['trend']])
-ax[2, 0].xaxis.set_minor_locator(fmt_month)
-ax[2, 0].xaxis.set_minor_formatter(mdates.DateFormatter('%b'))
-ax[2, 0].xaxis.set_major_locator(fmt_year)
-ax[2, 0].xaxis.set_major_formatter(mdates.DateFormatter('%b/%y'))
+fmt_gen(2, 0, fmt_month, fmt_year)
 plot_xline(2, 0, cut_pm)
 relabel(2, 0)
 
