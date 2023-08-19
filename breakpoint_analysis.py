@@ -79,8 +79,8 @@ def relabel(x, y):
         labels[idx] = " "
 
     labels[1] = "Decreasing"
-    labels[5] = "No trend"
-    labels[9] = "Increasing"
+    labels[5] = "Increasing"
+    labels[6] = "Increasing"
     ax[x, y].set_yticklabels(labels)
     ax[x, y].tick_params(left=False)
 
